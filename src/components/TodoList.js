@@ -13,7 +13,7 @@ export let DoneTasksArr = [];
 export let UnDoneTasksArr = [];
 
 function ToDoList(taskTitle) {
-  const [value, setValue] = useState(0);
+  const [, setValue] = useState(0);
   const location = useLocation();
 
   const getValueFromPath = () => {
