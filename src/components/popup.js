@@ -23,19 +23,13 @@ const style = {
 
 // con us dialog component
 
-export function Popup({
-  taskTitle,
-  taskDesc,
-  openpopup,
-  colsePopup,
-  index,
-  setEditSnack,
-}) {
+export function Popup({ openpopup, colsePopup, index, onSuccess, task }) {
   const { editTask } = useContext(AllTasksContext);
   //   const [open, setOpen] = React.useState(false);
+  console.log("task", task);
   const [taskData, settaskData] = useState({
-    taskTitle: taskTitle,
-    taskDesc: taskDesc,
+    taskTitle: task.taskTitle ?? "",
+    taskDesc: task.taskDesc ?? "",
   });
 
   return (
@@ -83,7 +77,8 @@ export function Popup({
                 onClick={() => {
                   editTask(index, taskData);
                   colsePopup();
-                  setEditSnack();
+                  //   setEditSnack();
+                  onSuccess();
                 }}
               >
                 Save
@@ -96,7 +91,7 @@ export function Popup({
   );
 }
 
-export function DeletePopup({ openpopup, colsePopup, index, setDeleteSnack }) {
+export function DeletePopup({ openpopup, colsePopup, index, onSuccess }) {
   const { deleteTask } = useContext(AllTasksContext);
   return (
     <div>
@@ -122,7 +117,8 @@ export function DeletePopup({ openpopup, colsePopup, index, setDeleteSnack }) {
                 onClick={() => {
                   deleteTask(index);
                   colsePopup();
-                  setDeleteSnack();
+                  //   setDeleteSnack();
+                  onSuccess();
                 }}
               >
                 Delete

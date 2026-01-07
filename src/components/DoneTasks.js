@@ -16,6 +16,7 @@ export default function DoneTasks() {
         taskDesc={t.taskDesc}
         isDone={t.isDone}
         index={index}
+        
       ></Task>
     ));
   return (

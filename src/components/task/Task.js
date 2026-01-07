@@ -11,14 +11,21 @@ import { useContext, useState } from "react";
 import { DeletePopup, Popup } from "../popup";
 import SimpleSnackbar from "../snackbar";
 
-export default function Task({ taskTitle, taskDesc, isDone, index }) {
+export default function Task({
+  taskTitle,
+  taskDesc,
+  isDone,
+  index,
+  onEdit,
+  onDelete,
+}) {
   const { toggleTask } = useContext(AllTasksContext);
-  const [openPopup, setOpenPopup] = useState(false);
-  const [deltePopup, setDeletePopup] = useState(false);
-  const [editSnack, setEditSnack] = useState(false);
-  const [deleteSnack, setDeleteSnack] = useState(false);
+  // const [openPopup, setOpenPopup] = useState(false);
+  // const [deltePopup, setDeletePopup] = useState(false);
+  // const [editSnack, setEditSnack] = useState(false);
+  // const [deleteSnack, setDeleteSnack] = useState(false);
 
-  const closePopupHandler = () => setOpenPopup(false);
+  // const closePopupHandler = () => setOpenPopup(false);
 
   return (
     <Container
@@ -62,7 +69,8 @@ export default function Task({ taskTitle, taskDesc, isDone, index }) {
             }}
             onClick={() => {
               // deleteTask(index);
-              setDeletePopup(true);
+              // setDeletePopup(true);
+              onDelete(index);
             }}
           >
             <DeleteRoundedIcon color="error"></DeleteRoundedIcon>
@@ -96,14 +104,17 @@ export default function Task({ taskTitle, taskDesc, isDone, index }) {
               bgcolor: "info.main",
               ":hover": { bgcolor: "secondary.main" },
             }}
-            onClick={() => setOpenPopup(true)}
+            onClick={() => {
+              // setOpenPopup(true)
+              onEdit(index);
+            }}
           >
             <ModeEditOutlineRoundedIcon color="primary"></ModeEditOutlineRoundedIcon>
           </IconButton>
         </Stack>
       </Stack>
 
-      <Popup
+      {/* <Popup
         taskTitle={taskTitle}
         taskDesc={taskDesc}
         openpopup={openPopup}
@@ -129,7 +140,7 @@ export default function Task({ taskTitle, taskDesc, isDone, index }) {
         title="task deleted successfully!"
         open={deleteSnack}
         onClose={() => setDeleteSnack(false)}
-      ></SimpleSnackbar>
+      ></SimpleSnackbar> */}
     </Container>
   );
 }
