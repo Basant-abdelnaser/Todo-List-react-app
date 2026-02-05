@@ -63,4 +63,5 @@ Dark / Light mode toggle
 
 ---
 published on netlify 
-view :https://todolist12321.netlify.app/
+
+view: https://todolist12321.netlify.app/
